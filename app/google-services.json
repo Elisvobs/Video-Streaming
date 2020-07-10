@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "964186157970",
+    "firebase_url": "https://byskopo-8442a.firebaseio.com",
+    "project_id": "byskopo-8442a",
+    "storage_bucket": "byskopo-8442a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964186157970:android:0ff3984bb6d89fb588074b",
+        "android_client_info": {
+          "package_name": "com.byskopo.byskopoyako"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964186157970-i65ohtr3v19esmkqlia5n847jhtejilh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDX0OQ1lzS4zZWPkTqlNhUtXYKO7DGG4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964186157970-i65ohtr3v19esmkqlia5n847jhtejilh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "964186157970-q9ehg3jtqnj2c6el0tobin1rr503rdmh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.byskopo.byskopoyako"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

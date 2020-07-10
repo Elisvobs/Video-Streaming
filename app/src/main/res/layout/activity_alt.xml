@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AltActivity">
+
+    <FrameLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:background="#000000"
+        android:layout_weight="0.5"
+        android:id="@+id/main_media_frame">
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/exoplayer"
+            android:gravity="center"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:background="#757575"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:text="Nothing"/>
+
+</LinearLayout>

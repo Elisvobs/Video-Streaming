@@ -1,0 +1,2 @@
+rootProject.name='Byskopoyako'
+include ':app'
