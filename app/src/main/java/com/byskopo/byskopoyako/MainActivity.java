@@ -41,10 +41,13 @@ public class MainActivity extends AppCompatActivity {
                         viewHolder.setVideo(
                                 getApplication(),
                                 video.getTitle(),
+//                                video.getYear(),
+//                                video.getTime(),
                                 video.getUrl()
                         );
                     }
                 };
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
+
 }

@@ -12,9 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
-import com.google.android.exoplayer2.DefaultRenderersFactory;
-import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
@@ -25,6 +24,7 @@ import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultAllocator;
@@ -47,7 +47,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         mContext = mView.getContext();
     }
 
-//    public void setVideo(final Context ctx, String title, final String url) {
+//    public void setVideo(final Context ctx, String title, String year, String time, final String url) {
     public void setVideo(final Context ctx, String title, final String url) {
         TextView videoTitle, videoYear, videoLength;
         videoTitle = mView.findViewById(R.id.videoTitle);
@@ -60,14 +60,14 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 //        videoLength.setText(length);
 //        if (mExoPlayer != null) {
             try {
-//                LoadControl loadControl = new DefaultLoadControl(
-//                        new DefaultAllocator(true, 16),
-//                        VideoPlayerConfig.MIN_BUFFER_DURATION,
-//                        VideoPlayerConfig.MAX_BUFFER_DURATION,
-//                        VideoPlayerConfig.MIN_PLAYBACK_START_BUFFER,
-//                        VideoPlayerConfig.MIN_PLAYBACK_RESUME_BUFFER,
-//                        -1, true);
-                LoadControl loadControl = new DefaultLoadControl();
+                LoadControl loadControl = new DefaultLoadControl(
+                        new DefaultAllocator(true, 16),
+                        VideoPlayerConfig.MIN_BUFFER_DURATION,
+                        VideoPlayerConfig.MAX_BUFFER_DURATION,
+                        VideoPlayerConfig.MIN_PLAYBACK_START_BUFFER,
+                        VideoPlayerConfig.MIN_PLAYBACK_RESUME_BUFFER,
+                        -1, true);
+//                LoadControl loadControl = new DefaultLoadControl();
 
                 BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter.Builder(ctx).build();
                 TrackSelection.Factory videoTrackSelectionFactory =
@@ -81,7 +81,9 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 //                mExoPlayer = ExoPlayerFactory.newSimpleInstance(
 //                        new DefaultRenderersFactory(this), trackSelector, loadControl);
 
-                mExoPlayer = ExoPlayerFactory.newSimpleInstance(ctx);
+//                mExoPlayer = ExoPlayerFactory.newSimpleInstance(ctx);
+
+                mExoPlayer = new SimpleExoPlayer.Builder(ctx).build();
 
                 Uri video = Uri.parse(url);
 
@@ -96,9 +98,9 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
                 mExoPlayer.prepare(mediaSource);
                 mExoPlayer.setPlayWhenReady(false);
 //            mExoPlayer.setPlaybackParameters();
-//                exoplayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FILL);
-//                mExoPlayer.setVideoScalingMode(C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
-//            exoplayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
+                exoplayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FILL);
+                mExoPlayer.setVideoScalingMode(C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING);
+                exoplayerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIT);
             } catch (Exception e) {
                 Log.e("Viewholder", "exoplayer error" + e.toString());
             }

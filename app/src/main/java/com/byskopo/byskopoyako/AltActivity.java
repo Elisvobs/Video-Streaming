@@ -12,13 +12,9 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
-import com.google.android.exoplayer2.DefaultRenderersFactory;
-import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.source.hls.HlsMediaSource;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
@@ -33,7 +29,6 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
 public class AltActivity extends AppCompatActivity {
-
     private final String STATE_RESUME_WINDOW = "resumeWindow";
     private final String STATE_RESUME_POSITION = "resumePosition";
     private final String STATE_PLAYER_FULLSCREEN = "playerFullscreen";
@@ -124,9 +119,8 @@ public class AltActivity extends AppCompatActivity {
                 videoTrackSelectionFactory);
         LoadControl loadControl = new DefaultLoadControl();
 
-        mPlayer = ExoPlayerFactory.newSimpleInstance(this);
-//        mPlayer = ExoPlayerFactory.newSimpleInstance(new DefaultRenderersFactory(
-//                this), trackSelector, loadControl);
+//        mPlayer = ExoPlayerFactory.newSimpleInstance(this);
+        mPlayer = new SimpleExoPlayer.Builder(this).build();
         mExoPlayerView.setPlayer(mPlayer);
 
         boolean haveResumePosition = mResumeWindow != C.INDEX_UNSET;
@@ -192,4 +186,5 @@ public class AltActivity extends AppCompatActivity {
         if (mFullScreenDialog != null)
             mFullScreenDialog.dismiss();
     }
+
 }
